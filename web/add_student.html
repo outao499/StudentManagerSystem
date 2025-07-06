@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>添加学生信息</title>
+    <link rel="stylesheet" href="static/css/add_student.css">
+</head>
+<body>
+<div class="header">
+    <h1>添加学生信息</h1>
+</div>
+<div class="nav">
+    <button onclick="window.location.href='dashboard.html'">返回</button>
+</div>
+<div class="form-container">
+    <div class="form-title">填写学生信息</div>
+
+    <div class="input-group">
+        <label class="input-label">姓名</label>
+        <input type="text" id="name" placeholder="输入学生姓名" required>
+    </div>
+
+    <div class="input-group">
+        <label class="input-label">性别</label>
+        <div class="radio-group">
+            <div class="radio-option">
+                <input type="radio" id="male" name="gender" value="男" checked>
+                <label class="radio-label" for="male">男</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="female" name="gender" value="女">
+                <label class="radio-label" for="female">女</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label class="input-label">年龄</label>
+        <input type="number" id="age" placeholder="输入学生年龄" required>
+    </div>
+
+    <div class="input-group">
+        <label class="input-label">学院</label>
+        <input type="text" id="college" placeholder="输入学生学院" required>
+    </div>
+
+    <div class="input-group">
+        <label class="input-label">班级</label>
+        <input type="text" id="className" placeholder="输入学生班级" required>
+    </div>
+
+    <button onclick="addStudent()">添加学生</button>
+    <div id="errorMessage" class="error-message"></div>
+</div>
+
+<script src="static/js/add_student.js"></script>
+</body>
+</html>

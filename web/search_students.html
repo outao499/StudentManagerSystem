@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息管理系统</title>
+    <link rel="stylesheet" href="static/css/search_students.css">
+</head>
+<body>
+<div class="header">
+    <h1>学生信息管理系统</h1>
+</div>
+
+<div class="nav">
+    <button onclick="window.location.href='dashboard.html'">返回首页</button>
+    <button onclick="loadAllStudents()">显示所有学生</button>
+</div>
+
+<div class="search-container">
+    <div class="input-wrapper">
+        <input type="text" id="searchName" placeholder="输入学生姓名">
+        <span class="clear-input" onclick="clearInput('searchName')">&#10006;</span>
+    </div>
+    <button onclick="searchStudentByName()">查询学生</button>
+</div>
+
+<div class="table-container">
+    <table id="studentTable">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>学院</th>
+            <th>班级</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="studentTableBody">
+        <tr>
+            <td colspan="6" class="loading">请点击"显示所有学生"按钮加载数据</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="notification" id="notification">
+    <span id="notificationMessage">操作成功</span>
+    <span class="notification-close" onclick="closeNotification()">×</span>
+</div>
+
+<!-- 学生编辑模态框 - 精简到6个核心字段 -->
+<div class="modal" id="editModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">编辑学生信息</div>
+            <div class="modal-close" onclick="closeEditModal()">×</div>
+        </div>
+        <div class="modal-body">
+            <form id="editForm">
+                <input type="hidden" id="editId" name="id">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editName">姓名</label>
+                        <input type="text" id="editName" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editGender">性别</label>
+                        <select id="editGender" name="gender" class="form-control" required>
+                            <option value="">请选择</option>
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editAge">年龄</label>
+                        <input type="number" id="editAge" name="age" class="form-control" min="16" max="30" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editCollege">学院</label>
+                        <input type="text" id="editCollege" name="college" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editClass">班级</label>
+                        <input type="text" id="editClass" name="classname" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="submitUpdate()">保存更改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="static/js/search_students.js"></script>
+</body>
+</html>
