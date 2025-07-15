@@ -125,9 +125,11 @@ function searchStudentByName() {
           throw new Error(data.message || '搜索失败');
         }
 
-        const searchResults = data.data || [];
-        renderStudents(searchResults);
-        showNotification(`找到 ${searchResults.length} 条匹配记录`);
+        // 关键修改：将搜索结果存储到全局变量
+        studentsData = data.data || [];
+
+        renderStudents(studentsData);
+        showNotification(`找到 ${studentsData.length} 条匹配记录`);
       })
       .catch(error => {
         console.error('搜索失败:', error);
